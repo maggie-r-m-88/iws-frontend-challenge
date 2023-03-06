@@ -1,7 +1,9 @@
 <template>
-  <div id="app">
-    <RawPublisher />
-    <HelloWorld />
+  <div class="container">
+    <div id="app">
+      <RawPublisher />
+      <HelloWorld />
+    </div>
   </div>
 </template>
 
@@ -27,4 +29,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>

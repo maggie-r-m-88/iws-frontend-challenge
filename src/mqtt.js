@@ -81,4 +81,14 @@ export default class IWS_MQTT {
       console.log(`Handler for topic ${message.destinationName} failed. Error: `, e)
     }
   }
+
+  unsub(topic){
+    this.client.unsubscribe(topic, function (complete) {
+       console.log("successfully unsubscribed: " + complete.result);
+    }, function (error) {
+       console.log("Error unsubscribing: " + (error.message || error.type));
+    });
+   
+  }
+
 }

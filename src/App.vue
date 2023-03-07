@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div id="app">
-      <RawPublisher />
+
       <HelloWorld />
     </div>
   </div>

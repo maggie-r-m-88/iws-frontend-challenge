@@ -9,6 +9,8 @@ export default class IWS_MQTT {
    * @param {string} host the hostname of the MQTT broker.
    * @param {int} port the port of the MQTT broker.
    */
+
+  // Initiates the client with host/port parameters 
   constructor(host, port) {
     this.host = host
     this.port = port
@@ -25,6 +27,7 @@ export default class IWS_MQTT {
     console.log('Connected!')
   }
 
+  // When we successfully connect to the server, callback function will show a message when successful
   connect(callbackFn = null) {
     console.log(`Connecting to ws://${this.host}:${this.port}`);
     let successCallbackFn = this._defaultConnect
@@ -41,6 +44,7 @@ export default class IWS_MQTT {
     this.client.connect(options)
   }
 
+  // When subscribing to a topic, add possibility for callback function that can be used when messages arrive for that topic
   sub(topic, qos = 0, callbackFn = null) {
     this.client.subscribe(topic, { qos: qos })
     this.subbedTopics.push(topic)
@@ -59,6 +63,7 @@ export default class IWS_MQTT {
     }
   }
 
+  // Publishes to topic with specific payload, or throws an error message
   pub(topic, payload, qos = 0, retain = false) {
     if (this.connected) {
       this.client.publish(topic, payload, qos, retain)
@@ -82,6 +87,7 @@ export default class IWS_MQTT {
     }
   }
 
+  //Unsubscribe to topic and log result
   unsub(topic){
     this.client.unsubscribe(topic, function (complete) {
        console.log("successfully unsubscribed: " + complete.result);
